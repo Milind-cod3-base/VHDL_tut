@@ -42,5 +42,60 @@ architecture rtl of led_blink is
   -- One bit select wire.
   signal w_LED_SELECT : std_logic;
 
-  
-  
+
+begin
+    -- All processes toggle a specific signal at a different frequency. 
+    -- They all run continuously even if the switches are
+    -- not selecting their particular output.
+
+    p_100_Hz : process (i_clock) is
+    begin
+        if rising_edge(i_clock) then
+            if r_CNT_100Hz= c_CNT_100Hz -1 then -- -1, since counter starts from 0
+                r_TOGGLE_100Hz <= not r_TOGGLE_100Hz;
+                r_CNT_100Hz <= 0;
+            
+            else
+                r_CNT_100Hz <= r_CNT_100Hz + 1;
+            end if;
+        end if;
+    end process p_100_Hz;
+
+    p_50_Hz : process (i_clock) is
+    begin
+        if rising_edge(i_clock) then
+            if r_CNT_50Hz= c_CNT_50Hz -1 then -- -1, since counter starts from 0
+                r_TOGGLE_50Hz <= not r_TOGGLE_50Hz;
+                r_CNT_50Hz <= 0;
+            
+            else
+                r_CNT_50Hz <= r_CNT_50Hz + 1;
+            end if;
+        end if;
+    end process p_50_Hz;
+
+    p_10_Hz : process (i_clock) is
+    begin
+        if rising_edge(i_clock) then
+            if r_CNT_10Hz= c_CNT_10Hz -1 then -- -1, since counter starts from 0
+                r_TOGGLE_10Hz <= not r_TOGGLE_10Hz;
+                r_CNT_10Hz <= 0;
+            
+            else
+                r_CNT_10Hz <= r_CNT_10Hz + 1;
+            end if;
+        end if;
+    end process p_10_Hz;
+
+    p_1_Hz : process (i_clock) is
+    begin
+        if rising_edge(i_clock) then
+            if r_CNT_1Hz= c_CNT_1Hz -1 then -- -1, since counter starts from 0
+                r_TOGGLE_1Hz <= not r_TOGGLE_1Hz;
+                r_CNT_1Hz <= 0;
+            
+            else
+                r_CNT_1Hz <= r_CNT_1Hz + 1;
+            end if;
+        end if;
+    end process p_1_Hz;
