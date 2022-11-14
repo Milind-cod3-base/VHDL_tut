@@ -32,3 +32,15 @@ architecture rtl of led_blink is
   signal r_CNT_50Hz : natural range 0 to c_CNT_50Hz;
   signal r_CNT_10Hz : natural range 0 to c_CNT_10Hz;
   signal r_CNT_1Hz : natural range 0 to c_CNT_1Hz;
+
+  -- Above signals will toggle at the frequencies needed:
+  signal r_TOGGLE_100Hz : std_logic := '0';
+  signal r_TOGGLE_50Hz : std_logic := '0';
+  signal r_TOGGLE_10Hz : std_logic := '0';
+  signal r_TOGGLE_1Hz : std_logic := '0';
+  
+  -- One bit select wire.
+  signal w_LED_SELECT : std_logic;
+
+  
+  
