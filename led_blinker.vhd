@@ -99,3 +99,12 @@ begin
             end if;
         end if;
     end process p_1_Hz;
+
+    -- Create a multiplexer based on switch inputs
+    w_LED_SELECT <= r_TOGGLE_100Hz when (i_switch_1 = '0' and i_switch_2 = '0') else
+                    r_TOGGLE_50Hz when (i_switch_1 = '0' and i_switch_2 = '1') else
+                    r_TOGGLE_10Hz when (i_switch_1 = '1' and i_switch_2 = '0') else
+                    r_TOGGLE_1Hz;
+
+        
+                    
