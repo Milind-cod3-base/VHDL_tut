@@ -106,5 +106,11 @@ begin
                     r_TOGGLE_10Hz when (i_switch_1 = '1' and i_switch_2 = '0') else
                     r_TOGGLE_1Hz;
 
+    
+    -- only allow o_led_drive to drive when i_enable is high (and gate)
+    o_led_drive <= w_LED_SELECT and i_enable;
+
+end rtl;
+
         
                     
